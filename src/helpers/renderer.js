@@ -5,8 +5,8 @@ import { Provider } from 'react-redux'
 import Routes from '../client/Route';
 import {renderRoutes} from 'react-router-config'
 import serialize from 'serialize-javascript';
-
-export default (req, store , context) => {
+import {Helmet } from 'react-helmet';
+ export default (req, store , context) => {
     const content = renderToString(
         <Provider store={store}>
             <StaticRouter context={context} location={req.path}>
