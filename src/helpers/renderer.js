@@ -6,10 +6,10 @@ import Routes from '../client/Route';
 import {renderRoutes} from 'react-router-config'
 import serialize from 'serialize-javascript';
 
-export default (req, store) => {
+export default (req, store , context) => {
     const content = renderToString(
         <Provider store={store}>
-            <StaticRouter context={{}} location={req.path}>
+            <StaticRouter context={context} location={req.path}>
             <div>
             {renderRoutes(Routes)}
             </div>
@@ -18,6 +18,7 @@ export default (req, store) => {
     );
     const html = `<html>
        <head>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
        </head>
        <body>
           <div id="root">${content}</div>
